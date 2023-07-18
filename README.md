@@ -1,0 +1,2 @@
+# servidor
+adduser david
