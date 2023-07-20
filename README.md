@@ -40,6 +40,7 @@ sudo mysql_secure_installation
 ```
 Este comando te guiará a través de un asistente para configurar opciones de seguridad básicas para MySQL, como eliminar usuarios anónimos, deshabilitar el inicio de sesión remoto para el usuario "root", eliminar la base de datos de pruebas y recargar los privilegios.
 
+## Paso 4: Configura MySQL
 Inicia sesión en MySQL como usuario root utilizando autenticación de socket. Esto se puede hacer ejecutando el siguiente comando en la terminal:
 ```bash
 sudo mysql -u root
@@ -58,4 +59,16 @@ FLUSH PRIVILEGES;
 Finalmente, puedes salir de la consola de MySQL ejecutando el comando:
 ```bash
 exit;
+```
+## Paso 5: Crear Usarios Remotos en MySQL
+Crear un nuevo usuario y lo asigna a la conexión desde el mismo host ('localhost') y si quieren remotos ('%'). La palabra clave IDENTIFIED BY se utiliza para establecer la contraseña del usuario.
+```bash
+CREATE user 'david'@'localhost' IDENTIFIED BY 'contraseña';
+```
+Otorgar todos los privilegios disponibles en todas las bases de datos (*.*) al usuario desde el host 'localhost'. La opción WITH GRANT OPTION permite que el usuario otorgue estos mismos privilegios a otros usuarios. Si no deseas que el usuario 'david' tenga la capacidad de otorgar privilegios a otros usuarios, puedes omitir esta parte.
+```bash
+GRANT ALL PRIVILEGES ON *.* TO 'david'@'localhost' WITH GRANT OPTION;GRANT ALL PRIVILEGES ON *.* TO 'david'@'%'
+```
+```bash
+GRANT ALL PRIVILEGES ON *.* TO 'david'@'%';
 ```
