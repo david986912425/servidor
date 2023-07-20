@@ -1,9 +1,3 @@
-**Table of Contents**
-
-[TOCM]
-
-[TOC]
-
 # servidor
 ## Paso 1: Crear usuario
 
@@ -78,19 +72,16 @@ GRANT ALL PRIVILEGES ON *.* TO 'david'@'localhost' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON *.* TO 'david'@'%';
 ```
 
-
-
  ## Paso 6: Permitir conexiones desde cualquier dirección IP: 
  Asegúrate de que MySQL esté configurado para escuchar en todas las direcciones IP.
-
 Edita el archivo de configuración de MySQL, generalmente llamado my.cnf o mysql.cnf
-
 ```bash
 sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
 ```
 Busca la línea que empiece con bind-address y cámbiala para que quede así:
-
+```bash
 bind-address = 0.0.0.0
+```
 
 Guarda los cambios y reinicia el servicio de MySQL.
 ```bash
