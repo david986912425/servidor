@@ -27,3 +27,35 @@ Una vez que hayas obtenido el script de instalación, procede a instalar Node.js
 ```bash
 sudo apt install nodejs -y
 ```
+## Paso 3: Instalar MySQL
+Ejecuta el siguiente comando para instalar el servidor de MySQL:
+```bash
+sudo apt install mysql-server
+```
+Durante la instalación, se te pedirá configurar una contraseña para el usuario "root" de MySQL. Asegúrate de recordar esta contraseña, ya que la necesitarás para acceder al servidor de MySQL.
+
+Una vez instalado, puedes ajustar la configuración de MySQL si lo deseas. Para ello, ejecuta el siguiente comando:
+```bash
+sudo mysql_secure_installation
+```
+Este comando te guiará a través de un asistente para configurar opciones de seguridad básicas para MySQL, como eliminar usuarios anónimos, deshabilitar el inicio de sesión remoto para el usuario "root", eliminar la base de datos de pruebas y recargar los privilegios.
+
+Inicia sesión en MySQL como usuario root utilizando autenticación de socket. Esto se puede hacer ejecutando el siguiente comando en la terminal:
+```bash
+sudo mysql -u root
+```
+Esto iniciará la sesión de MySQL como usuario root sin requerir una contraseña.
+
+Ahora, dentro de MySQL, utiliza el comando ALTER USER para cambiar la contraseña de 'root'. Por ejemplo, para cambiar la contraseña a "nuevacontraseña", ejecuta el siguiente comando:
+```bash
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'nuevacontraseña';
+```
+Después de ejecutar el comando ALTER USER, asegúrate de recargar los privilegios de MySQL para que los cambios surtan efecto:
+```bash
+FLUSH PRIVILEGES;
+```
+
+Finalmente, puedes salir de la consola de MySQL ejecutando el comando:
+```bash
+exit;
+```
