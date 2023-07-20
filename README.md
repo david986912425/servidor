@@ -67,8 +67,27 @@ CREATE user 'david'@'localhost' IDENTIFIED BY 'contraseña';
 ```
 Otorgar todos los privilegios disponibles en todas las bases de datos (*.*) al usuario desde el host 'localhost'. La opción WITH GRANT OPTION permite que el usuario otorgue estos mismos privilegios a otros usuarios. Si no deseas que el usuario 'david' tenga la capacidad de otorgar privilegios a otros usuarios, puedes omitir esta parte.
 ```bash
-GRANT ALL PRIVILEGES ON *.* TO 'david'@'localhost' WITH GRANT OPTION;GRANT ALL PRIVILEGES ON *.* TO 'david'@'%'
+GRANT ALL PRIVILEGES ON *.* TO 'david'@'localhost' WITH GRANT OPTION;
 ```
 ```bash
 GRANT ALL PRIVILEGES ON *.* TO 'david'@'%';
+```
+
+
+
+ ## Paso 6: Permitir conexiones desde cualquier dirección IP: 
+ Asegúrate de que MySQL esté configurado para escuchar en todas las direcciones IP.
+
+Edita el archivo de configuración de MySQL, generalmente llamado my.cnf o mysql.cnf
+
+```bash
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+```
+Busca la línea que empiece con bind-address y cámbiala para que quede así:
+
+bind-address = 0.0.0.0
+
+Guarda los cambios y reinicia el servicio de MySQL.
+```bash
+sudo service mysql restart
 ```
