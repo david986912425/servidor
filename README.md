@@ -13,6 +13,12 @@ usermod -aG sudo david
 ```
 Esto agregará al usuario "david" al grupo "sudo", lo que le permitirá ejecutar comandos con privilegios de superusuario cuando sea necesario.
 
+## Paso 2: Desactiva via SSH
+Editar la configuración de SSH
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
 ## Paso 2: Instalar Node
 Para instalar Node.js en el servidor, primero necesitaremos instalar cURL, que es una herramienta que nos permitirá obtener los archivos necesarios. Ejecuta el siguiente comando:
 ```bash
